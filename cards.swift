@@ -27,6 +27,9 @@ public struct Card: CustomStringConvertible {
     private(set) public var value: FaceValue
 
     public var description: String {
+        if (value.rawValue > 1 && value.rawValue < 11) {
+            return "\(value.rawValue) of \(suit)"
+        }
         return "\(value) of \(suit)"
     }
 }

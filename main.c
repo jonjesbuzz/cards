@@ -13,9 +13,11 @@ int main(int argc, char const *argv[]) {
     for (i = 0; i < NUM_CARDS; i++) {
         current = deck[i];
         current->toString(current, buffer);
-        printf("%20s\t", buffer);
+        printf("%s", buffer);
         if (i % 4 == 3) {
             putchar('\n');
+        } else {
+            putchar('\t');
         }
     }
 
