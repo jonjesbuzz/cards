@@ -1,3 +1,5 @@
+import Foundation
+
 public struct Card: CustomStringConvertible {
     public enum Suit: Int {
         case Spade = 0
@@ -41,7 +43,7 @@ public struct Deck: CustomStringConvertible {
     }
 
     public mutating func shuffle() {
-        deck = deck.sorted { (_, _) -> Bool in
+        deck.sort { (_, _) -> Bool in
             return arc4random() % 2 == 0
         }
     }
