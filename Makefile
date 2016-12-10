@@ -4,7 +4,9 @@ LDFLAGS += -I. -L. -lcards
 
 all: cards libcards.a
 
-everything: all cards-swift
+swift: cards-swift Cards.swiftmodule
+
+everything: all swift
 
 cards: main.c libcards.a
 	$(CC) $(LDFLAGS) $^ -o $@
@@ -14,8 +16,11 @@ cards.o: cards.c
 libcards.a: cards.o
 	ar rcs $@ $^
 
-cards-swift: main.swift cards.swift
+Cards.swiftmodule: cards.swift
+	swiftc -emit-module -module-name Cards $^
+
+cards-swift: cards.swift main.swift
 	swiftc $^ -o $@
 
 clean:
-	rm -rf cards cards.o libcards.a cards-swift
+	rm -rf cards *.o *.a cards-swift Cards.swiftmodule cards.swiftdoc
