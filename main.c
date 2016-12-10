@@ -1,10 +1,8 @@
 #include "cards.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 int main(int argc, char const *argv[]) {
-    srand(time(NULL));
     Deck deck = makeDeck();
     randomize(deck, NUM_CARDS * 2);
     int i;
