@@ -1,5 +1,5 @@
 # cards
-A boring card library, written in C.
+A boring card library, written (initially) in C.  Now comes in Swift.
 
 ## Why?
 Because I was bored.
@@ -11,7 +11,7 @@ It's a set of playing cards.  You can build a game out of it.
 Hahahahahahaha
 
 ## Can I make changes?
-Sure, make a pull request.
+Sure, make a pull request.  Add new languages.  It'll be fun.
 
 ## Why is it boring?
 Because, it's not that interesting.
