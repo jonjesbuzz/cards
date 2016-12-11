@@ -1,4 +1,7 @@
 import Foundation
+#if os(Linux)
+import Glibc
+#endif
 
 public struct Card: CustomStringConvertible {
     public enum Suit: Int {
@@ -47,7 +50,11 @@ public struct Deck: CustomStringConvertible {
 
     public mutating func shuffle() {
         deck.sort { (_, _) -> Bool in
-            return arc4random() % 2 == 0
+            #if os(Linux)
+                return random() % 2 == 0
+            #else
+                return arc4random() % 2 == 0
+            #endif
         }
     }
 
