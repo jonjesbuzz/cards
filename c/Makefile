@@ -1,18 +1,22 @@
 CC = cc
 CFLAGS += -O3
-LDFLAGS += -I. -L. -lcards
+LDFLAGS += -I. -L. -l$(LIBNAME)
 
-all: cards libcards.a
+NAME = cards
+OBJECTS = $(patsubst %.c,%.o,$(wildcard *.c))
+
+all: cards lib$(NAME).a
 
 everything: all
 
-cards: main.c libcards.a
-	$(CC) $(LDFLAGS) $^ -o $@
+$(NAME): main.c lib$(NAME).a
 
-cards.o: cards.c
+$(NAME).o: $(NAME).c
 
-libcards.a: cards.o
-	ar rcs $@ $^
+lib$(NAME).a: $(OBJECTS)
+
+%.a:
+	ar rcs $@ $?
 
 clean:
-	rm -rf cards *.o *.a cards-swift $(SWIFTMODULE).swiftmodule cards.swiftdoc
+	rm -rf $(NAME) $(NAME).o main.o lib$(NAME).a
