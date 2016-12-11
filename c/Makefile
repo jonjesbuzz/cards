@@ -19,4 +19,4 @@ lib$(NAME).a: $(OBJECTS)
 	ar rcs $@ $?
 
 clean:
-	rm -rf $(NAME) $(NAME).o main.o lib$(NAME).a
+	rm -rf $(NAME) $(OBJECTS) lib$(NAME).a
