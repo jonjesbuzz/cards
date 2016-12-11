@@ -19,5 +19,20 @@ Because, it's not that interesting.
 ## Really?
 Yeah.
 
+## Requirements?
+* C: Not much, just a C compiler
+* Swift: Any Swift 3 compiler on macOS.  Doesn't *quite* work on Linux yet because `arc4random()`.
+
+## How do I build it?
+For C:
+
+    cd c
+    make
+
+For Swift:
+
+    cd swift
+    swift build
+
 ## License?
 MIT, because you can do whatever you want.
