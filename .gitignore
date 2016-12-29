@@ -1,4 +1,6 @@
 c/cards
+cpp/cards
+
 *.swiftmodule
 *.swiftdoc
 
