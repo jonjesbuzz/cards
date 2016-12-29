@@ -21,7 +21,7 @@ Yeah.
 
 ## Requirements?
 * C: Not much, just a C compiler
-* Swift: Any Swift 3 compiler on macOS.  Doesn't *quite* work on Linux yet because `arc4random()`.
+* Swift: Swift 3 compiler on macOS or Linux.
 
 ## How do I build it?
 For C:
