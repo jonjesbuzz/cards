@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-#include "../src/card.h"
-#include "../src/deck.h"
+#include "card.h"
+#include "deck.h"
 
 #endif

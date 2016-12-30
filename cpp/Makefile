@@ -32,4 +32,4 @@ $(LIBDIR):
 	mkdir -p $@
 
 clean:
-	rm -rf $(NAME) $(LIBDIR) $(OBJDIR) lib$(NAME).a
+	rm -rf $(NAME) $(LIBDIR) $(OBJDIR)
