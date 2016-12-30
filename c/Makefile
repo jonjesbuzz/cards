@@ -8,11 +8,9 @@ INCLUDEDIR = include
 CFLAGS += -I$(INCLUDEDIR) -std=c11 -O3 -Wall
 LDFLAGS += -L$(LIBDIR) -l$(NAME)
 
-
 NAME = cards
 
 all: cards lib$(NAME).a
-
 
 $(NAME): $(SRCDIR)/main.c lib$(NAME).a
 	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@
