@@ -5,6 +5,7 @@ int main(int argc, char const *argv[])
 {
     Deck d;
     d.randomize();
-    std::cout << d.to_string() << std::endl;
+    std::cout << d << std::endl;
+
     return 0;
 }

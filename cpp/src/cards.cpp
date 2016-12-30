@@ -17,19 +17,19 @@ Card::~Card() {
 
 }
 
-std::string Card::to_string() {
+std::string Card::to_string() const {
     std::string suit_s;
     switch(suit) {
-        case SPADE:
+        case Suit::SPADE:
             suit_s = "Spade";
             break;
-        case CLUB:
+        case Suit::CLUB:
             suit_s = "Club";
             break;
-        case HEART:
+        case Suit::HEART:
             suit_s = "Heart";
             break;
-        case DIAMOND:
+        case Suit::DIAMOND:
             suit_s = "Diamond";
             break;
         default:
@@ -38,35 +38,45 @@ std::string Card::to_string() {
 
     std::string face;
     switch(face_value) {
-        case ACE:
+        case FaceValue::ACE:
             face = "Ace";
             break;
-        case JACK:
+        case FaceValue::JACK:
             face = "Jack";
             break;
-        case QUEEN:
+        case FaceValue::QUEEN:
             face = "Queen";
             break;
-        case KING:
+        case FaceValue::KING:
             face = "King";
             break;
         default:
-            std::stringstream str;
-            str << static_cast<int>(face_value);
-            face = str.str();
+            face = std::to_string(static_cast<int>(face_value));
             break;
     }
 
     std::stringstream stream;
     stream << face << " of " << suit_s;
     return stream.str();
+}
 
+FaceValue Card::get_face_value() const {
+    return this->face_value;
+}
+
+Suit Card::get_suit() const {
+    return this->suit;
+}
+
+std::ostream& operator<<(std::ostream &strm, const Card &c) {
+  return strm << c.to_string();
 }
 
 Deck::Deck() :
 num_cards(52) {
+    cards.reserve(num_cards);
     for (auto i = 0; i < num_cards; i++) {
-        cards.push_back(std::make_shared<Card>((FaceValue)(i%13 + 1), (Suit)(i/13)));
+        cards.emplace_back(static_cast<FaceValue>(i%13 + 1), static_cast<Suit>(i/13));
     }
 }
 
@@ -82,19 +92,17 @@ void Deck::randomize(int random_count) {
         do {
             b = std::rand() % num_cards;
         } while (a == b);
-        std::iter_swap(cards.begin() + a, cards.begin() + b);
     }
 }
 
-std::shared_ptr<Card> Deck::get_card(int index) {
+Card Deck::get_card(int index) const {
     return cards[index];
 }
 
-std::string Deck::to_string() {
+std::string Deck::to_string() const {
     std::stringstream stream;
     for (auto i = 0; i < num_cards; i++) {
-        auto current = cards[i];
-        auto s = current->to_string();
+        auto s = cards[i].to_string();
         stream << s;
         if (i % 4 == 3) {
             stream << std::endl;
@@ -103,4 +111,8 @@ std::string Deck::to_string() {
         }
     }
     return stream.str();
+}
+
+std::ostream& operator<<(std::ostream &strm, const Deck &d) {
+  return strm << d.to_string();
 }

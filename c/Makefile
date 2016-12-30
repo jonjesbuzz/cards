@@ -1,23 +1,37 @@
 CC = cc
-CFLAGS += -O3
-LDFLAGS += -I. -L. -l$(NAME)
+
+SRCDIR = src
+OBJDIR = obj
+LIBDIR = lib
+INCLUDEDIR = include
+
+CFLAGS += -I$(INCLUDEDIR) -std=c11 -O3 -Wall
+LDFLAGS += -L$(LIBDIR) -l$(NAME)
+
 
 NAME = cards
-OBJECTS = $(patsubst %.c,%.o,$(wildcard *.c))
 
 all: cards lib$(NAME).a
 
-everything: all
 
-$(NAME): main.c lib$(NAME).a
+$(NAME): $(SRCDIR)/main.c lib$(NAME).a
 	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@
 
-$(NAME).o: $(NAME).c
+$(OBJDIR)/$(NAME).o: $(SRCDIR)/$(NAME).c | $(OBJDIR)
 
-lib$(NAME).a: $(OBJECTS)
+lib$(NAME).a: $(OBJDIR)/$(NAME).o | $(LIBDIR)
 
 %.a:
-	ar rcs $@ $?
+	ar rcs $(LIBDIR)/$@ $?
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	$(CC) $(CFLAGS) $^ -c -o $@
+
+$(OBJDIR):
+	mkdir -p $@
+
+$(LIBDIR):
+	mkdir -p $@
 
 clean:
-	rm -rf $(NAME) $(OBJECTS) lib$(NAME).a
+	rm -rf $(NAME) $(LIBDIR) $(OBJDIR)

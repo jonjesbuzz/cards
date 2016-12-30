@@ -1,7 +1,10 @@
-#include <vector>
-#include <string>
+#ifndef CARDS_CARD_H_
+#define CARDS_CARD_H_
 
-enum FaceValue
+#include <string>
+#include <ostream>
+
+enum class FaceValue
 {
     ACE = 1,
     TWO = 2,
@@ -18,7 +21,7 @@ enum FaceValue
     KING = 13
 };
 
-enum Suit
+enum class Suit
 {
     SPADE = 0,
     CLUB = 1,
@@ -32,20 +35,16 @@ public:
     Card(FaceValue, Suit);
     Card(const Card&);
     ~Card();
-    const FaceValue face_value;
-    const Suit suit;
-    std::string to_string();
+
+    FaceValue get_face_value() const;
+    Suit get_suit() const;
+    std::string to_string() const;
+
+private:
+    FaceValue face_value;
+    Suit suit;
 };
 
-class Deck
-{
-public:
-    Deck();
-    ~Deck();
-    void randomize(int random_count = 1000);
-    std::shared_ptr<Card> get_card(int);
-    const int num_cards;
-    std::string to_string();
-private:
-    std::vector<std::shared_ptr<Card> > cards;
-};
+std::ostream& operator<<(std::ostream &strm, const Card &c);
+
+#endif
