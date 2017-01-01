@@ -20,11 +20,12 @@ Because, it's not that interesting.
 Yeah.
 
 ## Requirements?
-* C: Not much, just a C compiler
+* C: Not much, just a C compiler that supports C11.
+* C++: I use clang++.  You can use any compiler you want that supports C++11, I guess.
 * Swift: Swift 3 compiler on macOS or Linux.
 
 ## How do I build it?
-For C:
+For C / C++:
 
     cd c
     make
