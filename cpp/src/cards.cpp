@@ -1,6 +1,5 @@
 #include "cards.h"
 
-#include <algorithm>
 #include <cstdlib>
 #include <ctime>
 #include <sstream>
@@ -92,6 +91,7 @@ void Deck::randomize(int random_count) {
         do {
             b = std::rand() % num_cards;
         } while (a == b);
+        std::swap(cards[a], cards[b]);
     }
 }
 
