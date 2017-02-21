@@ -13,7 +13,7 @@ NAME = cards
 all: cards lib$(NAME).a
 
 $(NAME): $(SRCDIR)/main.c lib$(NAME).a
-	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $< $(LDFLAGS) -o $@
 
 $(OBJDIR)/$(NAME).o: $(SRCDIR)/$(NAME).c | $(OBJDIR)
 
