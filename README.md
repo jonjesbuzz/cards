@@ -1,5 +1,5 @@
 # cards
-A boring card library, written (initially) in C.  Now comes in Swift.
+A boring card library, written (initially) in C.  Now comes in Swift, C++, and Rust.
 
 ## Why?
 Because I was bored.
@@ -23,6 +23,7 @@ Yeah.
 * C: Not much, just a C compiler that supports C11.
 * C++: I use clang++.  You can use any compiler you want that supports C++11, I guess.
 * Swift: Swift 3 compiler on macOS or Linux.
+* Rust: The Rust compiler
 
 ## How do I build it?
 For C / C++:
@@ -34,6 +35,11 @@ For Swift:
 
     cd swift
     swift build
+
+For Rust:
+
+    cd rust
+    cargo build
 
 ## License?
 MIT, because you can do whatever you want.
