@@ -5,7 +5,7 @@ OBJDIR = obj
 LIBDIR = lib
 INCLUDEDIR = include
 
-CFLAGS += -I$(INCLUDEDIR) -std=c11 -O3 -Wall
+CFLAGS += -I$(INCLUDEDIR) -std=c11 -O3 -Wall -Wextra
 LDFLAGS += -L$(LIBDIR) -l$(NAME)
 
 NAME = cards

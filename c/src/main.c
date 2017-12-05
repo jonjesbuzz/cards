@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char const *argv[]) {
+int main() {
     Deck deck = makeDeck();
     randomize(deck, NUM_CARDS * 2);
     int i;

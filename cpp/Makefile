@@ -5,7 +5,7 @@ LIBDIR = lib
 OBJDIR = obj
 INCLUDEDIR = include
 
-CXXFLAGS += -I$(INCLUDEDIR) -O3 -std=c++11 -Wall
+CXXFLAGS += -I$(INCLUDEDIR) -O3 -std=c++11 -Wall -Wextra
 LDFLAGS += -L$(LIBDIR) -l$(NAME)
 
 NAME = cards

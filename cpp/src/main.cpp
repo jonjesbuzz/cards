@@ -1,7 +1,7 @@
 #include <iostream>
 #include "cards.h"
 
-int main(int argc, char const *argv[])
+int main()
 {
     Deck d;
     d.randomize();
