@@ -1,0 +1,33 @@
+matrix:
+  include:
+    - language: c
+      compiler: clang
+      python: 2.7
+      before_script:
+        - cd c
+      script:
+        - make
+
+    - language: cpp
+      compiler: clang
+      before_script:
+        - cd cpp
+      script:
+        - make
+
+    - language: rust
+      before_script:
+        - cd rust
+    
+    - language: java
+      before_script:
+        - cd java
+
+
+    - language: swift
+      os: osx
+      osx_image: xcode9.3
+      before_script:
+        - cd swift
+      script:
+        - swift build
