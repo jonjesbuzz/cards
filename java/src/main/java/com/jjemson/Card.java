@@ -2,6 +2,9 @@ package com.jjemson;
 
 /**
  * A Card represents a playing card.
+ * 
+ * @version 0.1.0
+ * @author Jonathan Jemson
  */
 public class Card implements Cloneable {
 

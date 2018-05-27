@@ -1,5 +1,11 @@
 package com.jjemson;
 
+/**
+ * Represents the suit of a playing card
+ * 
+ * @version 0.1.0
+ * @author Jonathan Jemson
+ */
 public enum Suit {
 
     SPADE   (0, "Spade"),

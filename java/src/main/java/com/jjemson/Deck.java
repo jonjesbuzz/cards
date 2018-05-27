@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+
+/**
+ * A Deck is a set of 52 playing cards.
+ * 
+ * @version 0.1.0
+ * @author Jonathan Jemson
+ */
 public class Deck {
     private static final int NUM_CARDS = 52;
     private List<Card> deck;

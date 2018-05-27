@@ -1,5 +1,10 @@
 package com.jjemson;
-
+/**
+ * Represents the face value of a playing card
+ * 
+ * @version 0.1.0
+ * @author Jonathan Jemson
+ */
 public enum FaceValue {
 
     ACE     (1, "Ace"),

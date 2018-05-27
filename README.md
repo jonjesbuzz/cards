@@ -1,5 +1,5 @@
 # cards
-A boring card library, written (initially) in C.  Now comes in Swift, C++, and Rust.
+A boring card library, written (initially) in C.  Now comes in Swift, C++, Rust, and Java.
 
 ## Why?
 Because I was bored.
@@ -22,8 +22,9 @@ Yeah.
 ## Requirements?
 * C: Not much, just a C compiler that supports C11.
 * C++: I use clang++.  You can use any compiler you want that supports C++11, I guess.
-* Swift: Swift 4.0.3 compiler on macOS or Linux.
+* Swift: Swift 4.1 compiler on macOS or Linux.
 * Rust: The Rust compiler
+* Java: Gradle, Java 8 JDK or newer
 
 ## How do I build it?
 For C / C++:
@@ -40,6 +41,10 @@ For Rust:
 
     cd rust
     cargo build
+
+For Java:
+    ./gradlew build
+    ./gradlew jar
 
 ## License?
 MIT, because you can do whatever you want.
