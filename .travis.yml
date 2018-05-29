@@ -22,7 +22,15 @@ matrix:
       before_script:
         - cd java
 
-
+    - language: python
+      python: 3.6
+      before_script:
+        - cd python
+      install:
+        - echo "Hello ma!"
+      script:
+        - python cards.py
+    
     - language: swift
       os: osx
       osx_image: xcode9.3
