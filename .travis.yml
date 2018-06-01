@@ -38,3 +38,13 @@ matrix:
         - cd swift
       script:
         - swift build
+
+    - language: objective-c
+      os: osx
+      osx_image: xcode9.3
+      before_script:
+        - cd objc
+      install: true
+      script:
+        - xcodebuild -project Cards.xcodeproj -scheme Cards build
+        - xcodebuild -project Cards.xcodeproj -scheme Cards test
