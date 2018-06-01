@@ -40,6 +40,7 @@
         } else {
             [result appendString:@"\t"];
         }
+        i++;
     }
     return [result copy];
 }
