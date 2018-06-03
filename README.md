@@ -29,6 +29,7 @@ Yeah.
 * Rust: The Rust compiler
 * Java: Gradle, Java 8 JDK or newer
 * Objective-C: Xcode 9.3.1, builds for iOS, macOS, watchOS, and tvOS.
+* NodeJS: NodeJS v10.3
 * Python: Python 3.6
 
 ## How do I build it?
