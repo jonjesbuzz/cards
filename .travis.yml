@@ -40,8 +40,11 @@ matrix:
         - swift build
     
     - language: node_js
+      node_js: "10.3"
       before_script:
         - cd nodejs
+        - npm install -g mocha
+        - npm install
 
     - language: objective-c
       os: osx
