@@ -2,7 +2,7 @@
 ![](https://travis-ci.org/jonjesbuzz/cards.svg?branch=master)
 
 
-A boring card library, written (initially) in C.  Now comes in Swift, C++, Rust, Java, Objective-C, and Python.
+A boring card library, written (initially) in C.  Now comes in Swift, C++, Rust, Java, Objective-C, NodeJS, and Python.
 
 ## Why?
 Because I was bored.
@@ -56,6 +56,12 @@ For Objective-C:
 
     xcodebuild -project Cards.xcodeproj -scheme Cards build
     xcodebuild -project Cards.xcodeproj -scheme Cards test
+
+For NodeJS:
+
+    npm install -g mocha
+    npm install
+    npm test
 
 For Python: nobody builds Python.
 
