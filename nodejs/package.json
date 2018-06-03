@@ -1,0 +1,28 @@
+{
+  "name": "jjcards",
+  "version": "1.0.0",
+  "description": "A boring card library",
+  "main": "jjcards.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonjesbuzz/cards.git"
+  },
+  "keywords": [
+    "boring",
+    "card",
+    "library"
+  ],
+  "author": "Jonathan Jemson <jonathanjemson@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonjesbuzz/cards/issues"
+  },
+  "homepage": "https://github.com/jonjesbuzz/cards#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.1.2"
+  }
+}

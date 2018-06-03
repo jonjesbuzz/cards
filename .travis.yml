@@ -38,6 +38,10 @@ matrix:
         - cd swift
       script:
         - swift build
+    
+    - language: node_js
+      before_script:
+        - cd nodejs
 
     - language: objective-c
       os: osx
