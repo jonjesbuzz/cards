@@ -19,12 +19,12 @@ public class Deck {
     public Deck() {
         this.deck = new ArrayList<>(NUM_CARDS);
         Suit suit;
-        FaceValue faceValue;
+        Rank rank;
         for (int s = 0; s < 4; s++) {
             suit = Suit.getSuit(s);
             for (int v = 1; v <= 13; v++) {
-                faceValue = FaceValue.getFaceValue(v);
-                deck.add(new Card(suit, faceValue));
+                rank = Rank.getRank(v);
+                deck.add(new Card(suit, rank));
             }
         }
     }

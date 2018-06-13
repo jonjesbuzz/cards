@@ -26,7 +26,7 @@ void CARD_to_string(Card* c, char* buffer) {
             break;
     }
     char face[6];
-    switch(c->value) {
+    switch(c->rank) {
         case ACE:
             sprintf(face,"Ace");
             break;
@@ -40,18 +40,18 @@ void CARD_to_string(Card* c, char* buffer) {
             sprintf(face, "King");
             break;
         default:
-            sprintf(face, "%d", c->value);
+            sprintf(face, "%d", c->rank);
             break;
     }
     sprintf(buffer, "%s of %s", face, suit);
 }
 
-Card* makeCard(FaceValue val, Suit s) {
+Card* makeCard(Rank rank, Suit s) {
     Card *c = (Card*)malloc(sizeof(Card));
     if (!c) {
         return NULL;
     }
-    c->value = val;
+    c->rank = rank;
     c->suit = s;
     c->toString = CARD_to_string;
     return c;
@@ -64,7 +64,7 @@ Deck makeDeck(void) {
     }
     int i;
     for (i = 0; i < NUM_CARDS; i++) {
-        cards[i] = makeCard((FaceValue)(i%13 + 1), (Suit)(i/13));
+        cards[i] = makeCard((Rank)(i%13 + 1), (Suit)(i/13));
     }
     return cards;
 }

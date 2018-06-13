@@ -4,12 +4,12 @@
 #include <ctime>
 #include <sstream>
 
-Card::Card(FaceValue face_value, Suit suit) :
-face_value(face_value), suit(suit) {
+Card::Card(Rank rank, Suit suit) :
+rank(rank), suit(suit) {
 }
 
 Card::Card(const Card& c1):
-face_value(c1.face_value), suit(c1.suit) {
+rank(c1.rank), suit(c1.suit) {
 }
 
 Card::~Card() {
@@ -35,32 +35,32 @@ std::string Card::to_string() const {
             return std::string("Error");
     }
 
-    std::string face;
-    switch(face_value) {
-        case FaceValue::ACE:
-            face = "Ace";
+    std::string rank_s;
+    switch(rank) {
+        case Rank::ACE:
+            rank_s = "Ace";
             break;
-        case FaceValue::JACK:
-            face = "Jack";
+        case Rank::JACK:
+            rank_s = "Jack";
             break;
-        case FaceValue::QUEEN:
-            face = "Queen";
+        case Rank::QUEEN:
+            rank_s = "Queen";
             break;
-        case FaceValue::KING:
-            face = "King";
+        case Rank::KING:
+            rank_s = "King";
             break;
         default:
-            face = std::to_string(static_cast<int>(face_value));
+            rank_s = std::to_string(static_cast<int>(rank));
             break;
     }
 
     std::stringstream stream;
-    stream << face << " of " << suit_s;
+    stream << rank_s << " of " << suit_s;
     return stream.str();
 }
 
-FaceValue Card::get_face_value() const {
-    return this->face_value;
+Rank Card::get_rank() const {
+    return this->rank;
 }
 
 Suit Card::get_suit() const {
@@ -75,7 +75,7 @@ Deck::Deck() :
 num_cards(52) {
     cards.reserve(num_cards);
     for (auto i = 0; i < num_cards; i++) {
-        cards.emplace_back(static_cast<FaceValue>(i%13 + 1), static_cast<Suit>(i/13));
+        cards.emplace_back(static_cast<Rank>(i%13 + 1), static_cast<Suit>(i/13));
     }
 }
 

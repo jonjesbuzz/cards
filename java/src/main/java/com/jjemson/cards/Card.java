@@ -9,17 +9,17 @@ package com.jjemson.cards;
 public class Card implements Cloneable {
 
     private Suit suit;
-    private FaceValue faceValue;
+    private Rank rank;
 
     /**
      * Create a new card with the specified Suit and Face Value.
      * 
      * @param suit The suit of the card.
-     * @param faceValue The face value of the card.
+     * @param rank The face value of the card.
      */
-    public Card(Suit suit, FaceValue faceValue) {
+    public Card(Suit suit, Rank rank) {
         this.suit = suit;
-        this.faceValue = faceValue;
+        this.rank = rank;
     }
 
     /**
@@ -29,7 +29,7 @@ public class Card implements Cloneable {
      */
     public Card(Card card) {
         this.suit = card.suit;
-        this.faceValue = card.faceValue;
+        this.rank = card.rank;
     }
 
     /**
@@ -42,14 +42,14 @@ public class Card implements Cloneable {
     /**
      * @return the face value
      */
-    public FaceValue getFaceValue() {
-        return faceValue;
+    public Rank getRank() {
+        return rank;
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append(this.faceValue);
+        builder.append(this.rank);
         builder.append(" of ");
         builder.append(this.suit);
         return builder.toString();

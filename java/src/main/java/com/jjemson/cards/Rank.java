@@ -5,7 +5,7 @@ package com.jjemson.cards;
  * @version 0.1.0
  * @author Jonathan Jemson
  */
-public enum FaceValue {
+public enum Rank {
 
     ACE     (1, "Ace"),
     TWO     (2, null),
@@ -24,39 +24,39 @@ public enum FaceValue {
 
     private int rawValue;
     private String displayName;
-    private FaceValue(int rawValue, String displayName) {
+    private Rank(int rawValue, String displayName) {
         this.rawValue = rawValue;
         this.displayName = displayName;
     }
 
-    public static FaceValue getFaceValue(int rawValue) {
+    public static Rank getRank(int rawValue) {
         switch (rawValue) {
             case 1:
-                return FaceValue.ACE;
+                return Rank.ACE;
             case 2:
-                return FaceValue.TWO;
+                return Rank.TWO;
             case 3:
-                return FaceValue.THREE;
+                return Rank.THREE;
             case 4:
-                return FaceValue.FOUR;
+                return Rank.FOUR;
             case 5:
-                return FaceValue.FIVE;
+                return Rank.FIVE;
             case 6:
-                return FaceValue.SIX;
+                return Rank.SIX;
             case 7:
-                return FaceValue.SEVEN;
+                return Rank.SEVEN;
             case 8:
-                return FaceValue.EIGHT;
+                return Rank.EIGHT;
             case 9:
-                return FaceValue.NINE;
+                return Rank.NINE;
             case 10:
-                return FaceValue.TEN;
+                return Rank.TEN;
             case 11:
-                return FaceValue.JACK;
+                return Rank.JACK;
             case 12:
-                return FaceValue.QUEEN;
+                return Rank.QUEEN;
             case 13:
-                return FaceValue.KING;
+                return Rank.KING;
             default:
                 throw new IllegalArgumentException("Face Values range from 1 (Ace), 2-10, 11 (Jack), 12 (Queen), and 13 (King).");
         }

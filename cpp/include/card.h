@@ -4,7 +4,7 @@
 #include <string>
 #include <ostream>
 
-enum class FaceValue
+enum class Rank
 {
     ACE = 1,
     TWO = 2,
@@ -32,16 +32,16 @@ enum class Suit
 class Card
 {
 public:
-    Card(FaceValue, Suit);
+    Card(Rank, Suit);
     Card(const Card&);
     ~Card();
 
-    FaceValue get_face_value() const;
+    Rank get_rank() const;
     Suit get_suit() const;
     std::string to_string() const;
 
 private:
-    FaceValue face_value;
+    Rank rank;
     Suit suit;
 };
 

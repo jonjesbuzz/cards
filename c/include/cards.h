@@ -24,17 +24,17 @@ typedef enum {
     JACK = 11,
     QUEEN = 12,
     KING = 13
-} FaceValue;
+} Rank;
 
 typedef struct _card {
-    FaceValue value;
+    Rank rank;
     Suit suit;
     void (*toString)(struct _card*, char*);
 } Card;
 
 typedef Card** Deck;
 
-Card* makeCard(FaceValue, Suit);
+Card* makeCard(Rank, Suit);
 Deck makeDeck(void);
 void freeCard(Card*);
 void freeDeck(Deck);

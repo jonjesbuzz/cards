@@ -1,0 +1,39 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ACE	../python/cards.py	/^    ACE = 1$/;"	kind:variable	line:15
+CLUB	../python/cards.py	/^    CLUB = 1$/;"	kind:variable	line:7
+Card	../python/cards.py	/^class Card:    $/;"	kind:class	line:34
+DIAMOND	../python/cards.py	/^    DIAMOND = 3$/;"	kind:variable	line:9
+Deck	../python/cards.py	/^class Deck:$/;"	kind:class	line:42
+EIGHT	../python/cards.py	/^    EIGHT = 8$/;"	kind:variable	line:22
+Enum	../python/cards.py	/^from enum import Enum$/;"	kind:namespace	line:1
+FIVE	../python/cards.py	/^    FIVE = 5$/;"	kind:variable	line:19
+FOUR	../python/cards.py	/^    FOUR = 4$/;"	kind:variable	line:18
+FaceValue	../python/cards.py	/^class FaceValue(Enum):$/;"	kind:class	line:14
+HEART	../python/cards.py	/^    HEART = 2$/;"	kind:variable	line:8
+JACK	../python/cards.py	/^    JACK = 11$/;"	kind:variable	line:25
+KING	../python/cards.py	/^    KING = 13$/;"	kind:variable	line:27
+List	../python/cards.py	/^from typing import List$/;"	kind:namespace	line:2
+NINE	../python/cards.py	/^    NINE = 9$/;"	kind:variable	line:23
+QUEEN	../python/cards.py	/^    QUEEN = 12$/;"	kind:variable	line:26
+SEVEN	../python/cards.py	/^    SEVEN = 7$/;"	kind:variable	line:21
+SIX	../python/cards.py	/^    SIX = 6$/;"	kind:variable	line:20
+SPADE	../python/cards.py	/^    SPADE = 0$/;"	kind:variable	line:6
+Suit	../python/cards.py	/^class Suit(Enum):$/;"	kind:class	line:5
+TEN	../python/cards.py	/^    TEN = 10$/;"	kind:variable	line:24
+THREE	../python/cards.py	/^    THREE = 3$/;"	kind:variable	line:17
+TWO	../python/cards.py	/^    TWO = 2$/;"	kind:variable	line:16
+__init__	../python/cards.py	/^    def __init__(self):$/;"	kind:member	line:43
+__init__	../python/cards.py	/^    def __init__(self, suit: Suit, faceValue: FaceValue):$/;"	kind:member	line:35
+__str__	../python/cards.py	/^    def __str__(self):$/;"	kind:member	line:11
+__str__	../python/cards.py	/^    def __str__(self):$/;"	kind:member	line:29
+__str__	../python/cards.py	/^    def __str__(self):$/;"	kind:member	line:39
+__str__	../python/cards.py	/^    def __str__(self):$/;"	kind:member	line:59
+cards.py	../python/cards.py	1;"	kind:file	line:1
+d	../python/cards.py	/^    d = Deck()$/;"	kind:variable	line:70
+randint	../python/cards.py	/^from random import randint$/;"	kind:namespace	line:3
+shuffle	../python/cards.py	/^    def shuffle(self, iterations=1000):$/;"	kind:member	line:49

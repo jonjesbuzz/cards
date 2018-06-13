@@ -3,15 +3,15 @@ import static org.junit.Assert.*;
 
 import com.jjemson.cards.Card;
 import com.jjemson.cards.Deck;
-import com.jjemson.cards.FaceValue;
+import com.jjemson.cards.Rank;
 import com.jjemson.cards.Suit;
 
 public class CardsTest {
     @Test 
     public void testCardConstructor() {
-        Card c = new Card(Suit.HEART, FaceValue.NINE);
+        Card c = new Card(Suit.HEART, Rank.NINE);
         assertEquals(Suit.HEART, c.getSuit());
-        assertEquals(FaceValue.NINE, c.getFaceValue());
+        assertEquals(Rank.NINE, c.getRank());
     }
 
     @Test

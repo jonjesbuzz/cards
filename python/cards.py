@@ -11,7 +11,7 @@ class Suit(Enum):
     def __str__(self) -> str:
         return str(self.name).capitalize()
 
-class FaceValue(Enum):
+class Rank(Enum):
     ACE = 1
     TWO = 2
     THREE = 3
@@ -32,18 +32,18 @@ class FaceValue(Enum):
         return str(self.name).capitalize()
 
 class Card:    
-    def __init__(self, suit: Suit, faceValue: FaceValue) -> None:
+    def __init__(self, suit: Suit, rank: Rank) -> None:
         self.suit = suit
-        self.faceValue = faceValue
+        self.rank = rank
     
     def __str__(self) -> str:
-        return "{} of {}".format(self.faceValue, self.suit)
+        return "{} of {}".format(self.rank, self.suit)
 
 class Deck:
     def __init__(self) -> None:
         self.deck = [] # type: List[Card]
         for s in list(Suit):
-            for v in list(FaceValue):
+            for v in list(Rank):
                 self.deck.append(Card(s, v))
     
     def shuffle(self, iterations:int=1000) -> None:
