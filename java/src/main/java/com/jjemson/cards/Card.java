@@ -1,4 +1,4 @@
-package com.jjemson;
+package com.jjemson.cards;
 
 /**
  * A Card represents a playing card.

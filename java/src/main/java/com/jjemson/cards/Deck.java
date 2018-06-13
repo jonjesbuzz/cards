@@ -1,4 +1,4 @@
-package com.jjemson;
+package com.jjemson.cards;
 
 import java.util.List;
 import java.util.ArrayList;
