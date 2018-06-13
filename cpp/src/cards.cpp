@@ -82,7 +82,7 @@ num_cards(52) {
 Deck::~Deck() {
 }
 
-void Deck::randomize(int random_count) {
+void Deck::shuffle(int random_count) {
     std::srand(std::time(0));
     auto a = 0;
     auto b = 0;

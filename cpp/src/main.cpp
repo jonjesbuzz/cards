@@ -4,7 +4,7 @@
 int main()
 {
     Deck d;
-    d.randomize();
+    d.shuffle();
     std::cout << d << std::endl;
 
     return 0;

@@ -12,7 +12,7 @@ class Deck
 public:
     Deck();
     ~Deck();
-    void randomize(int random_count = 1000);
+    void shuffle(int random_count = 1000);
     Card get_card(int) const;
     std::string to_string() const;
 

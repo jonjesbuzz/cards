@@ -4,7 +4,7 @@
 
 int main() {
     Deck deck = makeDeck();
-    randomize(deck, NUM_CARDS * 2);
+    shuffle(deck, NUM_CARDS * 2);
     int i;
     Card *current;
     char buffer[25];

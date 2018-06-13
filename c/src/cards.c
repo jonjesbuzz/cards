@@ -88,7 +88,10 @@ void swap(Deck v, int i, int j) {
     v[j] = temp;
 }
 
-void randomize(Deck deck, int numRandoms) {
+void shuffle(Deck deck, int numRandoms) {
+    if (numRandoms == 0) {
+        numRandoms = 1000;
+    }
     srand(time(NULL));
     int i = 0;
     int a = 0;

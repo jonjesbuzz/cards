@@ -39,7 +39,7 @@ Deck makeDeck(void);
 void freeCard(Card*);
 void freeDeck(Deck);
 void swap(Deck, int, int);
-void randomize(Deck, int);
+void shuffle(Deck, int);
 
 
 #endif
