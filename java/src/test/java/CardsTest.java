@@ -1,10 +1,10 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import com.jjemson.Card;
-import com.jjemson.Deck;
-import com.jjemson.FaceValue;
-import com.jjemson.Suit;
+import com.jjemson.cards.Card;
+import com.jjemson.cards.Deck;
+import com.jjemson.cards.FaceValue;
+import com.jjemson.cards.Suit;
 
 public class CardsTest {
     @Test 
