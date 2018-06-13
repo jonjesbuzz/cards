@@ -74,13 +74,7 @@ public struct Deck: CustomStringConvertible {
     }
 
     public mutating func shuffle() {
-        deck.sort { (_, _) -> Bool in
-            #if os(Linux)
-                return random() % 2 == 0
-            #else
-                return arc4random() % 2 == 0
-            #endif
-        }
+        deck.shuffle()
     }
 
     public var description: String {
