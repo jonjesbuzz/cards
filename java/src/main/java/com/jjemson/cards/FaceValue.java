@@ -1,4 +1,4 @@
-package com.jjemson;
+package com.jjemson.cards;
 /**
  * Represents the face value of a playing card
  * 
