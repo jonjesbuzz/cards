@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-
 #include "cards.h"
 
 const int NUM_CARDS = 52;
@@ -103,4 +102,33 @@ void shuffle(Deck deck, int numRandoms) {
         } while (a == b);
         swap(deck, a, b);
     }
+}
+
+uint8_t encodeCard(Card* card) {
+    uint8_t suit = (card->suit) << 4;
+    uint8_t rank = card->rank;
+    return (suit) | (rank);
+}
+
+Card* decodeCard(uint8_t encoded) {
+    int rank = encoded & 0xF;
+    int suit = (encoded & 0x30) >> 4;
+    Card* c = makeCard((Rank)rank, (Suit)suit);
+    return c;
+}
+
+uint8_t* encodeDeck(Deck deck) {
+    uint8_t* cards = (uint8_t*) calloc(NUM_CARDS, sizeof(uint8_t));
+    for (int i = 0; i < NUM_CARDS; i++) {
+        cards[i] = encodeCard(deck[i]);
+    }
+    return cards;
+}
+
+Deck decodeDeck(uint8_t* decoded) {
+    Deck deck = (Deck) calloc(NUM_CARDS, sizeof(Card));
+    for (int i = 0; i < NUM_CARDS; i++) {
+        deck[i] = decodeCard(decoded[i]);
+    }
+    return deck;
 }

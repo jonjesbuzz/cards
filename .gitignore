@@ -5,6 +5,7 @@ cpp/cards
 
 *.swiftmodule
 *.swiftdoc
+swift/**/*.xcodeproj
 
 # Created by https://www.gitignore.io/api/rust
 

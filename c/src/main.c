@@ -19,6 +19,15 @@ int main() {
         }
     }
 
+    uint8_t* encodedDeck = encodeDeck(deck);
+    for (i = 0; i < NUM_CARDS; i++) {
+        printf("0x%04X\t", encodedDeck[i]);
+        current = decodeCard(encodedDeck[i]);
+        current->toString(current, buffer);
+        printf("%s\n", buffer);
+        freeCard(current);
+    }
+
     putchar('\n');
     freeDeck(deck);
     return 0;

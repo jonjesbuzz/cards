@@ -3,8 +3,8 @@ import Foundation
 import Glibc
 #endif
 
-public struct Card: CustomStringConvertible {
-    public enum Suit: Int, CustomStringConvertible {
+public struct Card: CustomStringConvertible, Codable {
+    public enum Suit: Int, CustomStringConvertible, Codable {
         case spade = 0
         case club
         case heart
@@ -23,7 +23,7 @@ public struct Card: CustomStringConvertible {
             }
         }
     }
-    public enum Rank: Int, CustomStringConvertible {
+    public enum Rank: Int, CustomStringConvertible, Codable {
         case ace = 1
         case two = 2
         case three = 3
@@ -61,7 +61,7 @@ public struct Card: CustomStringConvertible {
         return "\(rank) of \(suit)"
     }
 }
-public struct Deck: CustomStringConvertible {
+public struct Deck: CustomStringConvertible, Codable {
     private var deck: [Card]
 
     public init() {

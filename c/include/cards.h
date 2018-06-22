@@ -1,6 +1,8 @@
 #ifndef CARD_H
 #define CARD_H
 
+#include <stdint.h>
+
 extern const int NUM_CARDS;
 
 typedef enum {
@@ -40,6 +42,9 @@ void freeCard(Card*);
 void freeDeck(Deck);
 void swap(Deck, int, int);
 void shuffle(Deck, int);
-
+uint8_t encodeCard(Card*);
+Card* decodeCard(uint8_t);
+uint8_t* encodeDeck(Deck);
+Deck decodeDeck(uint8_t*);
 
 #endif
