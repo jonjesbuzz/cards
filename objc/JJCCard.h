@@ -33,11 +33,13 @@ typedef NS_ENUM(NSUInteger, JJCRank) {
 NSString * _Nonnull NSStringFromJJCRank(JJCRank rank);
 NSString * _Nonnull NSStringFromJJCSuit(JJCSuit suit);
 
-@interface JJCCard : NSObject
+@interface JJCCard : NSObject <NSCoding>
 
 @property (atomic, assign) JJCSuit suit;
 @property (atomic, assign) JJCRank rank;
 
 - (nonnull instancetype)initWithSuit:(JJCSuit)suit rank:(JJCRank)rank;
+- (nullable instancetype)initWithEncodedData:(nonnull NSData *)data;
+- (nonnull NSData *)encode;
 
 @end

@@ -8,10 +8,12 @@
 #import <Foundation/Foundation.h>
 #import <Cards/JJCCard.h>
 
-@interface JJCDeck : NSObject
+@interface JJCDeck : NSObject <NSCoding>
 
-@property (strong, atomic, nonnull) NSArray<JJCCard *> *deck;
-
+- (nonnull instancetype)init;
+- (nullable instancetype)initWithEncodedData:(nonnull NSData *)data;
+- (nonnull JJCCard *)cardAtIndex:(NSUInteger)index;
 - (void)shuffle;
+- (nonnull NSData *)encode;
 
 @end

@@ -7,6 +7,9 @@
 
 #import "JJCCard.h"
 
+static NSString * _Nonnull const JJCCardKeyRank = @"rank";
+static NSString * _Nonnull const JJCCardKeySuit = @"suit";
+
 NSString * _Nonnull NSStringFromJJCRank(JJCRank rank) {
     switch (rank) {
         case JJCRankAce:
@@ -58,6 +61,42 @@ NSString * _Nonnull NSStringFromJJCSuit(JJCSuit suit) {
 
 - (NSString *)description {
     return [NSString stringWithFormat:@"%@ of %@", NSStringFromJJCRank(self.rank), NSStringFromJJCSuit(self.suit)];
+}
+
+- (NSData *)encode {
+    uint8_t *data = malloc(sizeof(uint8_t));
+    *data = (self.suit << 4 | self.rank);
+    void* encoded = (void *)data;
+    return [[NSData alloc] initWithBytes:encoded length:1];
+}
+
+- (instancetype)initWithEncodedData:(NSData *)data {
+    void* buf = malloc(1);
+    [data getBytes:buf length:1];
+    
+    uint8_t *encoded = (uint8_t *)buf;
+    
+    NSInteger rank = *encoded & 0xF;
+    NSInteger suit = (*encoded & 0x30) >> 4;
+    free(buf);
+    
+    if (suit < 0 || suit > 3 || rank < 1 || rank > 13) {
+        return nil;
+    }
+    self = [self initWithSuit:suit rank:rank];
+    return self;
+}
+
+- (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
+    [aCoder encodeInteger:self.rank forKey:JJCCardKeyRank];
+    [aCoder encodeInteger:self.suit forKey:JJCCardKeySuit];
+}
+
+- (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
+    NSInteger rank = [aDecoder decodeIntegerForKey:JJCCardKeyRank];
+    NSInteger suit = [aDecoder decodeIntegerForKey:JJCCardKeySuit];
+    self = [self initWithSuit:suit rank:rank];
+    return self;
 }
 
 @end
