@@ -5,16 +5,16 @@
 #include <sstream>
 
 Card::Card(Rank rank, Suit suit) :
-rank(rank), suit(suit) {
-}
+rank(rank), suit(suit) { }
 
 Card::Card(const Card& c1):
-rank(c1.rank), suit(c1.suit) {
-}
+rank(c1.rank), suit(c1.suit) { }
 
-Card::~Card() {
+Card::Card(const uint8_t encoded):
+rank(static_cast<Rank>(encoded & 0xF)), 
+suit(static_cast<Suit>((encoded & 0x30) >> 4)) { }
 
-}
+Card::~Card() { }
 
 std::string Card::to_string() const {
     std::string suit_s;
@@ -67,6 +67,12 @@ Suit Card::get_suit() const {
     return this->suit;
 }
 
+uint8_t Card::encode() const {
+    uint8_t r = static_cast<int>(this->rank);
+    uint8_t s = static_cast<int>(this->suit);
+    return (s << 4) | r;
+}
+
 std::ostream& operator<<(std::ostream &strm, const Card &c) {
   return strm << c.to_string();
 }
@@ -76,6 +82,14 @@ num_cards(52) {
     cards.reserve(num_cards);
     for (auto i = 0; i < num_cards; i++) {
         cards.emplace_back(static_cast<Rank>(i%13 + 1), static_cast<Suit>(i/13));
+    }
+}
+
+Deck::Deck(const std::vector<uint8_t> encoded) :
+num_cards(52) {
+    cards.reserve(encoded.size());
+    for (auto i = 0ul; i < encoded.size(); i++) {
+        cards.emplace_back(Card(encoded[i]));
     }
 }
 
@@ -97,6 +111,15 @@ void Deck::shuffle(int random_count) {
 
 Card Deck::get_card(int index) const {
     return cards[index];
+}
+
+std::vector<uint8_t> Deck::encode() const {
+    std::vector<uint8_t> encoded;
+    encoded.reserve(this->num_cards);
+    for (auto i = 0; i < num_cards; i++) {
+        encoded.emplace_back(cards[i].encode());
+    }
+    return encoded;
 }
 
 std::string Deck::to_string() const {

@@ -3,6 +3,15 @@
     "python.pythonPath": "/usr/local/bin/python3",
     "files.associations": {
         "type_traits": "c",
-        "cards.h": "c"
+        "cards.h": "c",
+        "cstdint": "cpp",
+        "__config": "cpp",
+        "__nullptr": "cpp",
+        "cstddef": "cpp",
+        "exception": "cpp",
+        "initializer_list": "cpp",
+        "stdexcept": "cpp",
+        "typeinfo": "cpp",
+        "algorithm": "cpp"
     }
 }

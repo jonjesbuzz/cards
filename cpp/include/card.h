@@ -3,6 +3,7 @@
 
 #include <string>
 #include <ostream>
+#include <cstdint>
 
 enum class Rank
 {
@@ -34,11 +35,13 @@ class Card
 public:
     Card(Rank, Suit);
     Card(const Card&);
+    Card(const uint8_t);
     ~Card();
 
     Rank get_rank() const;
     Suit get_suit() const;
     std::string to_string() const;
+    uint8_t encode() const;
 
 private:
     Rank rank;
