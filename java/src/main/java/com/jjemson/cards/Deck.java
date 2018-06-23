@@ -29,6 +29,23 @@ public class Deck {
         }
     }
 
+    public Deck(byte[] encoded) {
+        if (encoded.length > NUM_CARDS) {
+            throw new IllegalArgumentException("Encoded deck byte array is not valid.");
+        }
+        this.deck = new ArrayList<>(encoded.length);
+        Card c = null;
+        for (byte b : encoded) {
+            c = new Card(new byte[]{b});
+            this.deck.add(c);
+        }
+    }
+    
+    /**
+     * Shuffles the deck of cards.
+     * 
+     * @param randomCount Number of shuffles to perform.
+     */
     public void shuffle(int randomCount) {
         Random random = new Random();
         int a = 0;
@@ -41,6 +58,15 @@ public class Deck {
             Card aCard = deck.set(a, deck.get(b));
             deck.set(b, aCard);
         }
+    }
+
+    public byte[] encode() {
+        byte[] encoded = new byte[deck.size()];
+        int i = 0;
+        for (Card c : deck) {
+            encoded[i++] = c.encode()[0];
+        }
+        return encoded;
     }
 
     @Override
@@ -56,5 +82,14 @@ public class Deck {
             }
         }
         return builder.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) { return false; };
+        if (!(obj instanceof Deck)) { return false; };
+        Deck other = (Deck)obj;
+        return this.deck.equals(other.deck);
+
     }
 }

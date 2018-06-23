@@ -33,6 +33,22 @@ public class Card implements Cloneable {
     }
 
     /**
+     * Constructs a card from an encoded card byte array.
+     * 
+     * @param bytes A length 1 array of bytes representing a card.
+     */
+    public Card(byte[] bytes) {
+        if (bytes.length != 1) {
+            throw new IllegalArgumentException("Invalid byte array for an encoded card.");
+        }
+        byte encodedCard = bytes[0];
+        int decodedRank = (encodedCard & 0x0F);
+        int decodedSuit = (encodedCard & 0x30) >> 4;
+        this.rank = Rank.getRank(decodedRank);
+        this.suit = Suit.getSuit(decodedSuit);
+    }
+
+    /**
      * @return the suit.
      */
     public Suit getSuit() {
@@ -46,6 +62,12 @@ public class Card implements Cloneable {
         return rank;
     }
 
+    public byte[] encode() {
+        byte[] b = new byte[1];
+        b[0] = (byte)((this.suit.rawValue() << 4 ) | (this.rank.rawValue()));
+        return b;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -53,5 +75,14 @@ public class Card implements Cloneable {
         builder.append(" of ");
         builder.append(this.suit);
         return builder.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) { return false; }
+        if (!(obj instanceof Card)) { return false; }
+        Card other = (Card)obj;
+
+        return (this.suit == other.suit && this.rank == other.rank);
     }
 }

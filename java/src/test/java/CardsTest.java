@@ -18,5 +18,24 @@ public class CardsTest {
     public void printingTest() {
         Deck d = new Deck();
         System.out.println(d);
+        Deck d2 = new Deck();
+        assertEquals(d, d2);
+    }
+
+    @Test
+    public void testCardEncode() {
+        Card c = new Card(Suit.HEART, Rank.NINE);
+        byte[] encoded = c.encode();
+        assertEquals(encoded[0], 0x29);
+        Card c2 = new Card(encoded);
+        assertEquals(c, c2);
+    }
+
+    @Test
+    public void testDeckEncode() {
+        Deck d = new Deck();
+        byte[] encoded = d.encode();
+        Deck d2 = new Deck(encoded);
+        assertEquals(d, d2);
     }
 }
