@@ -58,13 +58,27 @@ class Card {
         this.rank = rank;
     }
 
+    static decode(encoded) {
+        let r = encoded & 0xF;
+        let s = (encoded & 0x30) >> 4
+        return new Card(s, r);
+    }
+
+    encode() {
+        return (this.suit << 4) | this.rank;
+    }
+
     toString() {
         return StringFromRank(this.rank) + " of " + StringFromSuit(this.suit);
     }
 };
 
 class Deck {
-    constructor() {
+    constructor(deck) {
+        if (deck !== undefined && deck.length <= 52) {
+            this.deck = deck;
+            return
+        }
         this.deck = Array();
         for (var s = 0; s < 4; s++) {
             for (var r = 1; r <= 13; r++) {
@@ -72,6 +86,22 @@ class Deck {
                 this.deck.push(c);
             }
         }
+    }
+
+    static decode(encoded) {
+        let d = Array();
+        encoded.forEach(function(e) {
+            d.push(Card.decode(e));
+        });
+        return new Deck(d);
+    }
+
+    encode() {
+        let encoded = Array();
+        this.deck.forEach(function(c) {
+            encoded.push(c.encode());
+        });
+        return encoded;
     }
 
     shuffle() {

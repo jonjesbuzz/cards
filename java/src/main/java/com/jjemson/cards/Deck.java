@@ -90,6 +90,5 @@ public class Deck {
         if (!(obj instanceof Deck)) { return false; };
         Deck other = (Deck)obj;
         return this.deck.equals(other.deck);
-
     }
 }
