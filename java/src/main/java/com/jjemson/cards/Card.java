@@ -28,8 +28,7 @@ public class Card implements Cloneable {
      * @param card The card to clone
      */
     public Card(Card card) {
-        this.suit = card.suit;
-        this.rank = card.rank;
+        this(card.suit, card.rank);
     }
 
     /**
