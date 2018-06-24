@@ -1,9 +1,13 @@
-import Foundation
-#if os(Linux)
-import Glibc
-#endif
+//
+//  Card.swift
+//  Cards
+//
+//  Created by Jonathan Jemson on 12/11/16
+//
 
-public struct Card: CustomStringConvertible, Codable {
+import Foundation
+
+public struct Card: CustomStringConvertible, Codable, Equatable {
     public enum Suit: Int, CustomStringConvertible, Codable {
         case spade = 0
         case club
@@ -37,7 +41,7 @@ public struct Card: CustomStringConvertible, Codable {
         case jack = 11
         case queen = 12
         case king = 13
-
+        
         public var description: String {
             switch (self) {
             case .ace:
@@ -53,40 +57,34 @@ public struct Card: CustomStringConvertible, Codable {
             }
         }
     }
-
+    
     private(set) public var suit: Suit
     private(set) public var rank: Rank
-
+    
     public var description: String {
         return "\(rank) of \(suit)"
     }
 }
-public struct Deck: CustomStringConvertible, Codable {
-    private var deck: [Card]
 
-    public init() {
-        deck = [Card]()
-        for s in 0..<4 {
-            for v in 1...13 {
-                deck.append(Card(suit: Card.Suit(rawValue: s)!, rank: Card.Rank(rawValue: v)!))
-            }
-        }
+public func ==(lhs: Card, rhs: Card) -> Bool {
+    return lhs.suit == rhs.suit && lhs.rank == rhs.rank
+}
+
+// Cards framework's encoding/decoding
+public extension Card {
+    public init?(encoded: Data) {
+        guard encoded.count == 1 else { return nil }
+        let bytes = Array<UInt8>(encoded)
+        guard let data = bytes.first,
+            let rank = Rank(rawValue: Int(data & 0x0F)),
+            let suit = Suit(rawValue: Int((data & 0x30) >> 4))
+            else { return nil }
+        self.rank = rank
+        self.suit = suit
     }
-
-    public mutating func shuffle() {
-        deck.shuffle()
-    }
-
-    public var description: String {
-        var deckString = ""
-        for (i, card) in deck.enumerated() {
-            deckString.append(card.description)
-            if (i % 4 == 3) {
-                deckString.append("\n")
-            } else {
-                deckString.append("\t")
-            }
-        }
-        return deckString
+    
+    public func encode() -> Data {
+        let encoded = UInt8((self.suit.rawValue << 4) | self.rank.rawValue)
+        return Data(bytes: [encoded])
     }
 }
