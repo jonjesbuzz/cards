@@ -36,15 +36,42 @@ class Card:
         self.suit = suit
         self.rank = rank
     
+    @classmethod
+    def from_bytes(cls, encoded: bytes):
+        i = int.from_bytes(encoded, byteorder='big', signed=False)
+        return cls.from_int(i)
+    
+    @classmethod
+    def from_int(cls, encoded: int):
+        rank = Rank(encoded & 0xF);
+        suit = Suit((encoded & 0x30) >> 4)
+        return cls(suit, rank)
+
+    def encode(self) -> bytes:
+        i = ((self.suit.value << 4) | self.rank.value)
+        return i.to_bytes(1, byteorder='big', signed=False)
+    
     def __str__(self) -> str:
         return "{} of {}".format(self.rank, self.suit)
 
 class Deck:
-    def __init__(self) -> None:
+    def __init__(self, initial_deck: List[Card] = None) -> None:
+        if initial_deck is not None:
+            assert len(initial_deck) == 52
+            self.deck = initial_deck
+            return
         self.deck = [] # type: List[Card]
         for s in list(Suit):
             for v in list(Rank):
                 self.deck.append(Card(s, v))
+
+    @classmethod
+    def decode(cls, encoded: bytes):
+        deck = [] # type: List[Card]
+        for b in encoded:
+            deck.append(Card.from_int(b))
+        return cls(initial_deck=deck)
+
     
     def shuffle(self, iterations:int=1000) -> None:
         a, b = 0, 0
@@ -55,6 +82,12 @@ class Deck:
                 if a != b:
                     break
             self.deck[a], self.deck[b] = self.deck[b], self.deck[a]
+    
+    def encode(self) -> bytes:
+        encoded = bytearray()
+        for c in self.deck:
+            encoded.extend(c.encode())
+        return encoded
 
     def __str__(self) -> str:
         s = ""
@@ -69,4 +102,8 @@ class Deck:
 if __name__ == '__main__':
     d = Deck()
     d.shuffle()
+    print(d.encode())
+    print(d.deck[0].encode())
+    print(Card.from_bytes(d.deck[0].encode()))
     print(d)
+    print(d.decode(d.encode()))
